@@ -1,0 +1,1127 @@
+# Copyright (C) 2018 WooCommerce IL Payment Gateways
+# This file is distributed under the same license as the WooCommerce IL Payment Gateways package.
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce IL Payment Gateways 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce-il-"
+"payment-gateways\n"
+"POT-Creation-Date: 2018-05-30 18:30:31+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2018-05-31 00:47+0300\n"
+"Language-Team: \n"
+"X-Generator: Poedit 2.0.7\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: he\n"
+
+#: includes/abstracts/abstract-wc-il-pgateways.php:206
+msgid "Number"
+msgstr "מספר"
+
+#: includes/abstracts/abstract-wc-il-pgateways.php:211
+msgid "Expiry Date"
+msgstr "תאריך תפוגה"
+
+#: includes/abstracts/abstract-wc-il-pgateways.php:216
+msgid "CVC"
+msgstr ""
+
+#: includes/abstracts/abstract-wc-il-pgateways.php:225
+#: includes/abstracts/abstract-wc-il-pgateways.php:236
+#: includes/abstracts/abstract-wc-il-pgateways.php:249
+msgid "Credit Card %s is a required field."
+msgstr "כרטיס אשראי %s הוא שדה חובה."
+
+#: includes/abstracts/abstract-wc-il-pgateways.php:256
+msgid "Credit Card Holder ID is invalid."
+msgstr "תעודת זהות אינה תקינה."
+
+#: includes/abstracts/abstract-wc-il-pgateways.php:265
+msgid "Credit Card Number is invalid."
+msgstr "מספר כרטיס אשראי אינו תקין."
+
+#: includes/abstracts/abstract-wc-il-pgateways.php:281
+msgid "Credit Card Exp Date is invalid."
+msgstr "תאריך כרטיס האשראי אינו תקין."
+
+#: includes/abstracts/abstract-wc-il-pgateways.php:339
+msgid "Already using URL as image: %s"
+msgstr ""
+
+#: includes/abstracts/abstract-wc-il-pgateways.php:347
+msgid "Select a image to upload"
+msgstr "בחר תמונה להעלות"
+
+#: includes/abstracts/abstract-wc-il-pgateways.php:348
+msgid "Use this image"
+msgstr ""
+
+#: includes/abstracts/abstract-wc-il-pgateways.php:349
+#: includes/abstracts/abstract-wc-il-pgateways.php:352
+msgid "Add image"
+msgstr "הוסף תמונה"
+
+#: includes/abstracts/abstract-wc-il-pgateways.php:360
+msgid "Remove image"
+msgstr "הסר תמונה"
+
+#: includes/class-wc-il-pgateways-init.php:110
+msgid "IL Payments requires WooCommerce to be activated"
+msgstr "‫IL Payments מוכרח שהתוסף WooCommerce יהיה דלוק"
+
+#: includes/class-wc-il-pgateways-init.php:114
+msgid "IL Payments requires WooCommerce version 2.5 or greater"
+msgstr "‫IL Payments מוכרח גירסה של WooCommerce גבוה מ 2.5"
+
+#: includes/exceptions/class-wc-ilpg-api-exceptions.php:7
+msgid "An error occurred while calling the API."
+msgstr "נוצרה בעיה."
+
+#: includes/gateways/class-wc-ilpg-tranzila.php:78
+#: includes/gateways/class-wc-ilpg-tranzila.php:277
+msgid "Card Holder ID"
+msgstr "תעודת זהות"
+
+#: includes/gateways/class-wc-ilpg-tranzila.php:79
+msgid "ID"
+msgstr ""
+
+#: includes/gateways/class-wc-ilpg-tranzila.php:135
+#: includes/gateways/class-wc-ilpg-tranzila.php:212
+msgid "Payment error: "
+msgstr "בעיה בתשלום: "
+
+#: includes/gateways/class-wc-ilpg-tranzila.php:259
+msgid "Cant Process Payment, Content Site Manager"
+msgstr "לא ניתן להמשיך בתשלום, צור קשר עם מנהל האתר"
+
+#: includes/gateways/class-wc-ilpg-tranzila.php:314
+msgid "Process"
+msgstr "המשך"
+
+#: includes/gateways/class-wc-ilpg-tranzila.php:443
+#: includes/gateways/class-wc-ilpg-tranzila.php:738
+msgid "Something Went Wrong, Contact Shop Manager"
+msgstr "קרתה שגיאה, צור קשר עם מנהל האתר"
+
+#: includes/gateways/class-wc-ilpg-tranzila.php:620
+#: includes/gateways/class-wc-ilpg-tranzila.php:659
+#: includes/gateways/class-wc-ilpg-tranzila.php:663
+#: includes/gateways/class-wc-ilpg-tranzila.php:792
+msgid "Error Has Occurs"
+msgstr "קרתה שגיאה"
+
+#: includes/gateways/class-wc-ilpg-tranzila.php:624
+msgid "Error Has Occurs, Contact Shop Manager"
+msgstr "‫קרתה שגיאה, צור קשר עם מנהל האתר"
+
+#: includes/gateways/class-wc-ilpg-tranzila.php:647
+msgid "Unable To Process Payment"
+msgstr ""
+
+#: includes/gateways/class-wc-ilpg-tranzila.php:682
+msgid "Transaction failed"
+msgstr ""
+
+#: includes/gateways/class-wc-ilpg-yaad-pay.php:181
+msgid "Cant Continue The Payment Contact Site Admin"
+msgstr ""
+
+#: includes/gateways/class-wc-ilpg-yaad-pay.php:186
+msgid "Cant Support Currency"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:51
+msgid "Transaction approved"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:52
+msgid "Blocked confiscate card."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:53
+msgid "Stolen confiscate card."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:54
+msgid "Contact credit company."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:55
+msgid "Refusal."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:56
+msgid "Forged. confiscate card."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:57
+msgid "Identity Number of CVV incorrect."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:58
+msgid "Must contact Credit Card Company"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:59
+msgid "Fault in building of access key to blocked cards file."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:60
+msgid "Contact unsuccessful."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:61
+msgid "Program ceased by user instruction (ESC)."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:62
+msgid "No confirmation for the ISO currency clearing."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:63
+msgid "No confirmation for the ISO currency type."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:64
+msgid "No confirmation for charge/discharge transaction."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:65
+msgid "Unsupported card"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:66
+msgid "Number Entered and Magnetic Strip do not match"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:67
+msgid "Last 4 digets not entered"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:68
+msgid "Record in INT_IN shorter than 16 characters."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:69
+msgid "Input file (INT_IN) does not exist."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:70
+msgid ""
+"Blocked cards file (NEG) non-existent or has not been updated - execute "
+"transmission or request authorization for each transaction."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:71
+msgid "One of the parameter files or vectors do not exist."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:72
+msgid "Date file (DATA) does not exist."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:73
+msgid "Format file (START) does not exist."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:74
+msgid ""
+"Difference in days in input of blocked cards is too large - execute "
+"transmission or request authorization for each transaction."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:75
+msgid ""
+"Difference in generations in input of blocked cards is too large - execute "
+"transmission or request authorization for each transaction."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:76
+msgid "Where the magnetic strip is not completely entered"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:77
+msgid ""
+"Central terminal number not entered into terminal defined for work as main "
+"supplier."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:78
+msgid ""
+"Beneficiary number not entered into terminal defined as main beneficiary."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:79
+msgid ""
+"Terminal not updated as main supplier/beneficiary and supplier/beneficiary "
+"number entered."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:80
+msgid "Terminal updated as main supplier and beneficiary number entered"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:81
+msgid ""
+"Old transactions - carry out transmission or request authorization for each "
+"transaction."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:82
+msgid "Defective card"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:83
+msgid ""
+"Card not permitted for this terminal or no authorization for this type of "
+"transaction."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:84
+msgid "Card not permitted for transaction or type of credit."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:85
+msgid "Expired."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:86
+msgid ""
+"Error in instalments - Amount of transaction needs to be equal to the first "
+"instalment + (fixed instalments times no. of instalments)"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:87
+msgid ""
+"Cannot execute transaction in excess of credit card ceiling for immediate "
+"debit."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:88
+msgid "Control number incorrect."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:89
+msgid "Terminal defined as main beneficiary and supplier number entered."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:90
+msgid ""
+"Exceeds ceiling where input file contains J1 or J2 or J3 (contact "
+"prohibited)."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:91
+msgid ""
+"Card blocked for supplier where input file contains J1 or J2 or J3 (contact "
+"prohibited)."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:92
+msgid "Random where input file contains J1 (contact prohibited)."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:93
+msgid ""
+"Terminal prohibited from requesting authorization without transaction (J5)"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:94
+msgid "Terminal prohibited for supplier-initiated authorization request (J6)"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:95
+msgid ""
+"Terminal must request authorization where input file contains J1 or J2 or J3 "
+"(contact prohibited)."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:96
+msgid ""
+"Secret code must be entered where input file contains J1 or J2 or J3 "
+"(contact prohibited)."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:97
+msgid " Vehicle number defective."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:98
+msgid "Distance meter not entered."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:99
+msgid ""
+"Terminal not defined as gas station. (petrol card passed or incorrect "
+"transaction code)."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:100
+msgid "Identity Number Not Entered"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:101
+msgid "CVV2 Not Entered"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:102
+msgid "Identiy Number and CVV2 Not Entered"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:103
+msgid "ABS attachment not found at start of input data in memory."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:104
+msgid "Card number not found or found twice"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:105
+msgid "Incorrect transaction type"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:106
+msgid "Incorrect transaction code."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:107
+msgid "Type of credit incorrect."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:108
+msgid "Incorrect currency."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:109
+msgid ""
+"First instalment and/or fixed payment exists for non-instalments type of "
+"credit."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:110
+msgid "Number of instalments exists for type of credit not requiring this."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:111
+msgid ""
+"Linkage to dollar or index not possible for credit other than instalments."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:112
+msgid "Length of magnetic strip too short."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:113
+msgid "PIN terminal not defined"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:114
+msgid "PIN must be enetered"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:115
+msgid "Secret code not entered."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:116
+msgid "Incorrect secret code."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:117
+msgid "Incorrect secret code - last try."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:118
+msgid "Currency is not listed in vector 59."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:119
+msgid "\"Club code\" entered for unsuitable credit type"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:120
+#: includes/gateways/config/config-ilpg-tranzila.php:121
+#: includes/gateways/config/config-ilpg-tranzila.php:122
+msgid "Transaction cancelling is not allowed for this card."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:123
+msgid "Cannot read/write/open TRAN file."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:124
+msgid "No equipment for inputting secret code."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:125
+msgid "No authorization from credit company for work."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:126
+msgid "Transaction amount too large - split into a number of transactions."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:127
+msgid "Terminal not authorized to execute forced actions."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:128
+msgid "Terminal not authorized for card with service code 587."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:129
+msgid "Terminal not authorized for immediate debit card."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:130
+msgid "Terminal not authorized for instalments transaction."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:131
+msgid ""
+"Terminal not authorized for telephone/signature only instalments transaction."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:132
+msgid "Terminal not authorized for telephone transaction."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:133
+msgid "Terminal not authorized for \"signature only\" transaction."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:134
+msgid "Terminal not authorized for dollar transaction."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:135
+msgid "Terminal not authorized for club transaction."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:136
+msgid "Terminal not authorized for stars/points/miles transaction."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:137
+msgid "Terminal not authorized for Isracredit credit."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:138
+msgid "Terminal not authorized for Amex Credit credit."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:139
+msgid "Terminal not authorized for dollar linkage."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:140
+msgid "Terminal not authorized for index linkage."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:141
+msgid "Terminal not authorized for index linkage with foreign cards."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:142
+msgid ""
+"Terminal not authorized for stars/points/miles transaction for this type of "
+"credit."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:143
+msgid "Terminal not authorized for Isracredit payments."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:144
+msgid "Terminal not authorized for Amex payments."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:145
+msgid "Terminal not authorized for this club code."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:146
+msgid ""
+"Terminal not authorized for immediate debit transaction except for immediate "
+"debit cards."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:147
+msgid "Terminal not authorized to accept Visa card staring with 3."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:148
+msgid ""
+"Terminal not authorized to execute credit transaction above the ceiling."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:149
+msgid "Card not permitted for execution of club transaction."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:150
+msgid "Card not permitted for execution stars/points/miles transaction."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:151
+msgid ""
+"Card not permitted for execution of dollar transactions (regular or "
+"telephone)."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:152
+msgid "Card not valid according Isracard list of valid cards."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:153
+msgid ""
+"Defective card according to system definitions (Isracard VECTOR1) - no. of "
+"figures on card - error."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:154
+msgid ""
+"Card not permitted to execute dollar transactions according to system "
+"definition (Isracard VECTOR1)."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:155
+msgid ""
+"Card belongs to group not permitted to execute transactions according to "
+"system definition (Visa VECTOR 20)."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:156
+msgid ""
+"Card prefix (7 figures) invalid according to system definition (Diners "
+"VECTOR21)"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:157
+msgid ""
+"Card not permitted to carry out instalments transaction according to "
+"Isracard list of valid cards."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:158
+msgid ""
+"Number of instalments too large according to Isracard list of valid cards."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:159
+msgid "Visa and Diners cards not permitted for club instalments transactions."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:160
+msgid ""
+"Series of cards not valid according to system definition (Isracard VECTOR5)."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:161
+msgid "Invalid service code according to system definition (Isracard VECTOR6)."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:162
+msgid ""
+"Card prefix (2 figures) invalid according to system definition (Isracard "
+"VECTOR7)."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:163
+msgid "Invalid service code according to system definition (Visa VECTOR12)."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:164
+msgid "Invalid service code according to system definition (Visa VECTOR13)."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:165
+msgid "Immediate debit card prohibited for execution of credit transaction."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:166
+msgid ""
+"Card not permitted to execute instalments transaction according to Leumicard "
+"vector no. 31."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:167
+msgid ""
+"Card not permitted for telephone and signature only transaction according to "
+"Leumicard vector no. 31"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:168
+msgid ""
+"Card not permitted for telephone transaction according to Leumicard vector "
+"no. 31"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:169
+msgid "Credit not approved for immediate debit cards."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:170
+msgid "Credit not approved for foreign cards."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:171
+msgid "Club code incorrect."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:172
+msgid ""
+"Card not permitted to execute flexible credit transactions (Adif/30+) "
+"according to system definition (Diners VECTOR21)."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:173
+msgid ""
+"Card not permitted to execute immediate debit transactions according to "
+"system definition (Diners VECTOR21)."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:174
+msgid "Amount of payment for credit transaction too small."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:175
+msgid "Incorrect number of instalments for credit transaction"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:176
+msgid ""
+"0 ceiling for this type of card for regular credit or Credit transaction."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:177
+msgid "0 ceiling for this type of card for immediate debit credit transaction"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:178
+msgid "0 ceiling for this type of card for immediate debit in dollars."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:179
+msgid "0 ceiling for this type of card for telephone transaction."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:180
+msgid "0 ceiling for this type of card for credit transaction."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:181
+msgid "0 ceiling for this type of card for instalments transaction."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:182
+msgid ""
+"American Express card issued abroad not permitted for instalments "
+"transaction."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:183
+msgid "JCB cards permitted to carry out regular credit transactions."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:184
+msgid "Amount in stars/points/miles larger than transaction amount."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:185
+msgid "Club card not in terminal range."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:186
+msgid "Stars/points/miles transaction cannot be executed."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:187
+msgid "Dollar transaction cannot be executed for this type of card."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:188
+msgid "Credit transaction cannot be executed with other than regular credit."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:189
+msgid "Amount of discount on stars/points/miles greater than permitted."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:190
+msgid "Forced transaction cannot be executed with credit/immediate debut card."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:191
+msgid ""
+"Previous transaction cannot be cancelled (credit transaction or card number "
+"not identical)."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:192
+msgid "Double transaction."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:193
+msgid "Terminal not permitted for index linkage for this type of credit."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:194
+msgid "Terminal not permitted for dollar linkage for this type of credit."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:195
+msgid "Card invalid according to system definition (Isracard VECTOR1)"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:196
+msgid ""
+"Cannot execute \"Self-Service\" transaction at gas stations except at \"Self-"
+"Service at gas stations\"."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:197
+msgid "Credit transaction forbidden with stars/points/miles."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:198
+msgid "Dollar credit transaction forbidden on tourist card."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:199
+msgid "Club Card can not preform Telephone Transactions"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:200
+msgid "Application error."
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:201
+msgid "Approved TEST Masav transaction"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:202
+msgid "Invalid Bank Number"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:203
+msgid "Invalid Branch Number"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:204
+msgid "Invalid Account Number"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:205
+msgid "Incorrect Bank/Branch/Account Combination"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:206
+msgid "Application Error"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:207
+msgid "Supplier directory does not exist"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:208
+msgid "Supplier configuration does not exist"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:209
+msgid "Charge amount zero or negative"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:210
+msgid "Invalid configuration file"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:211
+msgid "Invalid date format"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:212
+msgid "DB Error"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:213
+msgid "Required parameter is missing"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:214
+msgid "Transaction Canceled"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:215
+msgid "3D Secure Failed"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:216
+msgid "Fraud suspected"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:217
+msgid "Protocol Error"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:218
+msgid "Payment not completed"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:219
+msgid "Payment Failed"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:220
+msgid "Payment status error"
+msgstr ""
+
+#: includes/gateways/config/config-ilpg-tranzila.php:221
+msgid "Payment completed unsuccessfully"
+msgstr ""
+
+#: includes/gateways/settings/settings-il-pgateways.php:9
+msgid "Enable/Disable"
+msgstr ""
+
+#: includes/gateways/settings/settings-il-pgateways.php:16
+msgid "Title"
+msgstr ""
+
+#: includes/gateways/settings/settings-il-pgateways.php:18
+msgid "This controls the title which the user sees during checkout."
+msgstr ""
+
+#: includes/gateways/settings/settings-il-pgateways.php:23
+msgid "Description"
+msgstr ""
+
+#: includes/gateways/settings/settings-il-pgateways.php:26
+msgid "This controls the description which the user sees during checkout."
+msgstr ""
+
+#: includes/gateways/settings/settings-il-pgateways.php:30
+msgid "Payment Image"
+msgstr ""
+
+#: includes/gateways/settings/settings-il-pgateways.php:35
+msgid "Optional"
+msgstr ""
+
+#: includes/gateways/settings/settings-ilpg-pelecard.php:9
+#: includes/gateways/settings/settings-ilpg-tranzila.php:9
+msgid "Terminal"
+msgstr ""
+
+#: includes/gateways/settings/settings-ilpg-pelecard.php:11
+msgid "This is the API Terminal. You will got from Pelecard."
+msgstr ""
+
+#: includes/gateways/settings/settings-ilpg-pelecard.php:16
+msgid "Username"
+msgstr ""
+
+#: includes/gateways/settings/settings-ilpg-pelecard.php:18
+#: includes/gateways/settings/settings-ilpg-pelecard.php:25
+msgid "Username. You will got from Pelecard."
+msgstr ""
+
+#: includes/gateways/settings/settings-ilpg-pelecard.php:23
+msgid "Password"
+msgstr "סיסמא"
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:11
+msgid "This is the API Terminal. You will got from Tranzila."
+msgstr "שם הטרמינל שטרנזילה יצרו עבורך."
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:16
+msgid "iFrame Mode"
+msgstr "חיוב דרך iFrame"
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:18
+msgid "Enable Tranzila iFrame Checkout."
+msgstr "‫הפעלת חיוב דרך iFrame."
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:20
+msgid ""
+"If Left Disable Will Use Tranzila API. An iFrame module gives you the option "
+"of embedding a payment window inside your site without redirecting to "
+"another site. The Success and Error URL is: %s"
+msgstr ""
+"אם מצב iFrame ישאר מכובה הפלאגין ינסה לחייב דרך API Request לשרתי טרנזילה. "
+"הלינק של הצלחה וכישלון: %s"
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:24
+msgid "iFrame Width"
+msgstr "רוחב iFrame"
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:26
+#: includes/gateways/settings/settings-ilpg-tranzila.php:32
+msgid "Enable Tranzila iFrame Checkout"
+msgstr "הפעלת חיוב דרך iFrame"
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:30
+msgid "iFrame Height"
+msgstr "גובה iFrame"
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:36
+msgid "iFrame Handshake Transaction"
+msgstr "מנגנון Handshake"
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:38
+msgid "Enable Tranzila iFrame Handshake Transaction Key."
+msgstr ""
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:44
+#: includes/gateways/settings/settings-ilpg-tranzila.php:46
+msgid "Tranzila PW"
+msgstr ""
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:48
+msgid ""
+"Case Handshake Mode Is Enable, Tranzila Need To Generate Custom Password For "
+"This Service, And Dont Forget To Also Enable This In Tranzila Settings"
+msgstr ""
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:52
+msgid "iFrame Notify URL"
+msgstr ""
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:54
+#: includes/gateways/settings/settings-ilpg-tranzila.php:62
+msgid "Enable Tranzila Notify URL Checkout"
+msgstr ""
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:56
+msgid "If Enable Add This Link To Tranzila Notify URL Field: %s"
+msgstr ""
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:60
+msgid "Notify URL Trusted IP Address"
+msgstr ""
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:64
+msgid ""
+"The Plugin Will Complete Order Only If The Request To The Notify URL Was "
+"Made From Given IP. Leave Empty To Cancel This Check."
+msgstr ""
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:68
+msgid "iFrame language"
+msgstr ""
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:71
+msgid "Auto"
+msgstr "אוטומטי"
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:72
+msgid "Hebrew"
+msgstr "עברית"
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:73
+msgid "English"
+msgstr "אנגלית"
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:74
+msgid "Russian"
+msgstr "רוסית"
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:75
+msgid "Spanish"
+msgstr "ספרדית"
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:76
+msgid "German"
+msgstr "גרמנית"
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:77
+msgid "French"
+msgstr "צרפתית"
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:78
+msgid "Japanese"
+msgstr "יפנית"
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:80
+msgid "iFrame lang"
+msgstr "שפת iFrame"
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:84
+msgid "IFrame Submit Button Text"
+msgstr ""
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:86
+msgid "IFrame Button Text"
+msgstr ""
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:90
+#: includes/gateways/settings/settings-ilpg-tranzila.php:92
+msgid "IFrame Background Color"
+msgstr ""
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:97
+#: includes/gateways/settings/settings-ilpg-tranzila.php:99
+msgid "IFrame Button Background Color"
+msgstr ""
+
+#: includes/gateways/settings/settings-ilpg-tranzila.php:104
+#: includes/gateways/settings/settings-ilpg-tranzila.php:106
+msgid "IFrame Text Color"
+msgstr ""
+
+#: includes/gateways/settings/settings-ilpg-yaad-pay.php:9
+msgid "Password Signature"
+msgstr ""
+
+#: includes/gateways/settings/settings-ilpg-yaad-pay.php:11
+msgid "This is the API Signature. You will got from Yaad Pay."
+msgstr ""
+
+#: includes/gateways/settings/settings-ilpg-yaad-pay.php:16
+msgid "Term No."
+msgstr ""
+
+#: includes/gateways/settings/settings-ilpg-yaad-pay.php:18
+msgid "This is the your Term No. You will got from Yaad Pay."
+msgstr ""
+
+#: includes/gateways/settings/settings-ilpg-yaad-pay.php:30
+#: includes/gateways/settings/settings-ilpg-yaad-pay.php:31
+msgid "Postpone"
+msgstr ""
+
+#: includes/gateways/settings/settings-ilpg-yaad-pay.php:37
+#: includes/gateways/settings/settings-ilpg-yaad-pay.php:38
+msgid "Products"
+msgstr ""
+
+#: includes/gateways/settings/settings-ilpg-yaad-pay.php:65
+msgid "IFrame Width"
+msgstr ""
+
+#: includes/gateways/settings/settings-ilpg-yaad-pay.php:72
+msgid "IFrame Height"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "WooCommerce IL Payment Gateways"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Israel Gateways"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Ohad Goldstein"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://www.ohadg.com"
+msgstr ""
