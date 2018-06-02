@@ -449,7 +449,7 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
         }
 
         // Case Of Delay With The Notify URL, Wait 10sec with 2 ajax requests and check the Status
-        WC()->session->set("{$this->id}_pending_webhook", ['order_id' => $order_id, 'tires' => 0]);
+        WC()->session->set("{$this->id}_pending_webhook", ['order_id' => $order_id, 'tries' => 0]);
         echo '<script>window.parent.pendingResponse.init()</script>';
         exit;
     }
@@ -541,7 +541,7 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
      */
     protected function validate_response_params($order, $request)
     {
-        if (isset($this->settings['iframe_handshake']) && $this->settings['iframe_handshake']) {
+        if (isset($this->settings['iframe_handshake']) && $this->settings['iframe_handshake'] == 'yes') {
             // Check Handshake
             if (!$this->check_handshake_response($order, $request)) {
                 $this->log(['Handshake Validation', $_POST]);
