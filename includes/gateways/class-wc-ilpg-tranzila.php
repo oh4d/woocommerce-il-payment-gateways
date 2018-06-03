@@ -212,8 +212,8 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
                 wc_add_notice( __('Payment error: ', 'woocommerce-il-payment-gateways') . $exception->getMessage(), 'error' );
 
                 // Redirect to Checkout Page
-                $redirect_url = $order->get_checkout_payment_url(true);
-                echo '<script>window.top.location.href = "' . $redirect_url . '";</script>';
+                $redirect_url = $order->get_checkout_payment_url();
+                echo '<script>window.parent.location.href = "' . $redirect_url . '";</script>';
                 exit;
             }
         }
@@ -441,7 +441,7 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
                 $redirect_url = $this->get_return_url($order);
             } else {
                 wc_add_notice(__('Something Went Wrong, Contact Shop Manager', 'woocommerce-il-payment-gateways'), 'error' );
-                $redirect_url = $order->get_checkout_payment_url(true);
+                $redirect_url = $order->get_checkout_payment_url();
             }
 
             echo '<script>window.top.location.href = "' . $redirect_url . '";</script>';
@@ -519,7 +519,7 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
             exit;
         }
 
-        echo json_encode(['result' => '', 'redirect' => $order->get_checkout_payment_url(true)]);
+        echo json_encode(['result' => '', 'redirect' => $order->get_checkout_payment_url()]);
 
         if (isset($pending_data['tries']) && $pending_data['tries'] == 2){
             WC()->session->set("{$this->id}_pending_webhook", false);
