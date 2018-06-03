@@ -653,7 +653,7 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
 
         try {
             $response = $this->send_api_request($url, $params);
-            $this->log(json_encode(['API Flow. Response', $response, get_request_ip(), $_POST]));
+            $this->log(json_encode(['API Flow. Response', $response, get_request_ip()]));
 
         } catch (\Exception $exception) {
             throw new \Exception(__('Error Has Occurs'));
