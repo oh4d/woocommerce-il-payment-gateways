@@ -55,6 +55,7 @@ var pendingResponse = (function() {
                 }
 
                 process++;
+                pending();
             },
             error: function(xhr) {
                 alert('WAT!?@#?');

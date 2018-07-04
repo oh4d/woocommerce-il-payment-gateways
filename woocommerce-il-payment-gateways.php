@@ -17,8 +17,6 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
-// register_deactivation_hook(__FILE__, 'deactivate_winkcrm_cf7');
-
 if (!function_exists('woocommerce_il_pgateways')) {
     /**
      * Initialize The Plugin
