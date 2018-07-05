@@ -307,11 +307,11 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
             'key' => $order->get_order_key(),
             'pdesc' => $this->transform_order_info($order),
             'ppnewwin' => 'no', // paypal button
-            'tranmode' => 'VK',
             'trBgColor' => (isset($this->settings['iframe_bg_color'])) ? str_replace('#', '', $this->settings['iframe_bg_color']) : '',
             'trTextColor' => (isset($this->settings['iframe_text_color'])) ? str_replace('#', '', $this->settings['iframe_text_color']) : '',
             'trButtonColor' => (isset($this->settings['iframe_button_bg'])) ? str_replace('#', '', $this->settings['iframe_button_bg']) : '',
             'buttonLabel' => (isset($this->settings['iframe_submit']) && $this->settings['iframe_submit']) ? $this->settings['iframe_submit'] : __('Process', 'woocommerce-il-payment-gateways'),
+            // 'tranmode' => 'VK',
             // 'opensum' => 1, // allow kind of donation, customer select the price
 
             // 'thtk' => 'R321e7X3Msl2m8yYavX5M6HtvbnFKzS0H3dHeZq3mvH8QOuJ2S',
