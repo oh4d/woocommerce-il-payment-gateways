@@ -37,7 +37,7 @@ return [
         'type' => 'checkbox',
         'label' => __('Enable Tranzila iFrame Handshake Transaction Key.', 'woocommerce-il-payment-gateways'),
         'default' => false,
-        'description' => __('' , 'woocommerce-il-payment-gateways'),
+        'description' => sprintf(__('Enable In Tranzila Settings Needed For This To Work, And Add The Server IP Address To Tranzila Settings: %s' , 'woocommerce-il-payment-gateways'), $_SERVER['SERVER_ADDR']),
         'desc_tip' => false
     ),
     'tranzila_pw' => array(
