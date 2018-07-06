@@ -8,7 +8,7 @@ Currently there is only one gateway supported, but there is a preparation to add
 ## Supported Gateways:
 
 * Tranzila:
-    * Regular API Payment Request
-    * IFrame Mode
-    * Handshake Mode
-    * Notify URL (with IP address test)
+    * Regular API Payment Request - Not Fully Tested yet
+    * IFrame Mode - Fully Tested
+    * Handshake Mode - Fully Tested
+    * Notify URL (with IP address test) - Fully Tested

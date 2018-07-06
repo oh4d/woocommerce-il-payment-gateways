@@ -282,6 +282,22 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
     }
 
     /**
+     * Return Repeated Params
+     *
+     * @param WC_Order $order
+     * @return array
+     */
+    protected function global_params($order)
+    {
+        return array(
+            'cred_type' => 1,
+            'tranmode' => 'A',  // Mode for verify transaction, / VK
+            'sum' => (string) $order->get_total(),
+            'currency' => $this->gateway_currency(),
+        );
+    }
+
+    /**
      * Make IFrame Request Params
      *
      * @param WC_Order $order
@@ -289,10 +305,7 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
      */
     protected function iframe_params($order)
     {
-        return array(
-            'sum' => (string) $order->get_total(),
-            'cred_type' => 1,
-            'currency' => $this->gateway_currency(),
+        return array_merge($this->global_params($order), array(
             'company' => $order->get_billing_company(),
             'contact' => $order->get_formatted_billing_full_name(),
             'email' => $order->get_billing_email(),
@@ -312,12 +325,11 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
             'trButtonColor' => (isset($this->settings['iframe_button_bg'])) ? str_replace('#', '', $this->settings['iframe_button_bg']) : '',
             'buttonLabel' => (isset($this->settings['iframe_submit']) && $this->settings['iframe_submit']) ? $this->settings['iframe_submit'] : __('Process', 'woocommerce-il-payment-gateways'),
             // 'opensum' => 1, // allow kind of donation, customer select the price
-            // 'tranmode' => 'VK',
             // 'u71' => '1',
             // 'orderid' => '511',
             // 'orderurl' => 'gotopay.co.il',
             // 'orderid' => $order->get_id(),
-        );
+        ));
     }
 
     /**
@@ -328,20 +340,14 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
      */
     protected function api_params($order)
     {
-        return array(
+        return array_merge($this->global_params($order), array(
             'supplier' => $this->settings['terminal'],
-            'sum' => (string) $order->get_total(),
-            'currency' => $this->gateway_currency(),
             'ccno' => $this->card_fields['number'],
             'expdate' => $this->card_fields['exp']->format('m') . $this->card_fields['exp']->format('y'), // mmyy
             'mycvv' => $this->card_fields['cvv'],
             'myid' => $this->card_fields['chid'],
-            'cred_type' => 1,
-            'tranmode' => 'A', // Mode for verify transaction
-
             // 'TranzilaTK' => '',
-            // 'TranzilaPW' => $this->settings['terminal'],
-        );
+        ));
     }
 
     /**
