@@ -32,7 +32,7 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
             add_action("woocommerce_api_wc_gateway_{$this->id}", array($this, 'gateway_response'));
 
             // Notify URL
-            if (isset($this->settings['iframe_notify_url']) && $this->settings['iframe_notify_url'] == 'yes') {
+            if ($this->notify_url_check()) {
                 add_action("woocommerce_api_wc_gateway_{$this->id}_webhook", array($this, 'gateway_webhook'));
             }
 
@@ -153,7 +153,7 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
 
         $order = wc_get_order($order_id);
 
-        if (isset($this->settings['iframe_notify_url']) && $this->settings['iframe_notify_url'] == 'yes') {
+        if ($this->notify_url_check()) {
             wp_enqueue_script('wc-il-pgateways-tranzila-pending');
         }
 
@@ -161,8 +161,8 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
                     id="chekout_frame" class="ilpg_chekout_frame" name="chekout_frame"
                     style="border:none;'.$this->iframe_style().'" scrolling="no"></iframe>';
 
-        if (isset($this->settings['iframe_handshake']) && $this->settings['iframe_handshake'] == 'yes')
-            echo '<script>window.jQuery(document).ready(function(){jQuery("div.woocommerce:not(.widget)").block({message: null,overlayCSS: {background: "#fff",opacity: 0.6}})})</script>';
+        if ($this->handshake_feature_check())
+            echo $this->get_front_blockui_onload();
     }
 
     /**
@@ -203,7 +203,7 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
         }
 
         // Handshake Is Enable
-        if (isset($this->settings['iframe_handshake']) && $this->settings['iframe_handshake'] == 'yes') {
+        if ($this->handshake_feature_check()) {
             try {
                 $thtk = $this->create_handshake_request($order);
                 update_post_meta($order->get_id(), "{$this->id}_handshake", $thtk);
@@ -219,7 +219,7 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
         }
 
         echo $this->make_form_view($order, isset($thtk) ? $thtk : false);
-        echo '<script>window.onload = function(){window.parent.jQuery("div.woocommerce:not(.widget)").unblock();document.forms["'.$this->id.'"].submit()}</script>';
+        echo $this->get_front_blockui_onload(false, 'document.forms["'.$this->id.'"].submit()');
         exit;
     }
 
@@ -311,11 +311,8 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
             'trTextColor' => (isset($this->settings['iframe_text_color'])) ? str_replace('#', '', $this->settings['iframe_text_color']) : '',
             'trButtonColor' => (isset($this->settings['iframe_button_bg'])) ? str_replace('#', '', $this->settings['iframe_button_bg']) : '',
             'buttonLabel' => (isset($this->settings['iframe_submit']) && $this->settings['iframe_submit']) ? $this->settings['iframe_submit'] : __('Process', 'woocommerce-il-payment-gateways'),
-            // 'tranmode' => 'VK',
             // 'opensum' => 1, // allow kind of donation, customer select the price
-
-            // 'thtk' => 'R321e7X3Msl2m8yYavX5M6HtvbnFKzS0H3dHeZq3mvH8QOuJ2S',
-            // 'json_purchase_data' => '%5B%7B%22product_name%22%3A%22%5Cu05de%5Cu05de%5Cu05e9%5Cu05e7%20%5Cu05e1%5Cu05dc%5Cu05d9%5Cu05e7%5Cu05d4%20tranzila%20%5Cu05e2%5Cu05d1%5Cu05d5%5Cu05e8%20Woocommerce%20-%20%5Cu05d4%5Cu05ea%5Cu05e7%5Cu05e0%5Cu05d4%20%5Cu05e2%5Cu05e6%5Cu05de%5Cu05d9%5Cu05ea%2C%20%5Cu05dc%5Cu05dc%5Cu05d0%20%5Cu05ea%5Cu05de%5Cu05d9%5Cu05db%5Cu05d4%22%2C%22product_quantity%22%3A1%2C%22product_price%22%3A300%7D%5D',
+            // 'tranmode' => 'VK',
             // 'u71' => '1',
             // 'orderid' => '511',
             // 'orderurl' => 'gotopay.co.il',
@@ -416,7 +413,7 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
         }
 
         $status = $order->get_status();
-        $this->log(['iFrame Flow. Redirected', $_REQUEST['Response'], get_request_ip(), $_REQUEST, $status]);
+        $this->log(['iFrame Flow.', $_REQUEST['Response'], get_request_ip(), $_REQUEST, $status]);
 
         // In Case Of Not True Error Code Can Safety Redirect (No Need To Check\Wait With Notify URL)
         if (!isset($_REQUEST['Response']) || $_REQUEST['Response'] != '000') {
@@ -432,8 +429,7 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
         }
 
         // Check If Notify URL Is Disable
-        if (!isset($this->settings['iframe_notify_url']) || $this->settings['iframe_notify_url'] == 'no'
-            || $status === 'processing') {
+        if (!$this->notify_url_check()) {
 
             if ($this->validate_response_params($order, $_REQUEST)) {
                 $this->complete_order($order, '', $this->output_transaction_reference($_REQUEST));
@@ -444,6 +440,13 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
                 $redirect_url = $order->get_checkout_payment_url();
             }
 
+            echo '<script>window.top.location.href = "' . $redirect_url . '";</script>';
+            exit;
+        }
+
+        // Case Webhook Already Entered
+        if ($status === 'processing') {
+            $redirect_url = $this->get_return_url($order);
             echo '<script>window.top.location.href = "' . $redirect_url . '";</script>';
             exit;
         }
@@ -483,7 +486,7 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
         if (!$this->validate_response_params($order, $_REQUEST))
             exit;
 
-        $this->complete_order($order, '', $this->output_transaction_reference($_REQUEST));
+        $this->complete_order($order, '(Notify URL)', $this->output_transaction_reference($_REQUEST));
         echo 'ok';
         exit;
     }
@@ -513,6 +516,7 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
 
         $status = $order->get_status();
 
+        // Case Payment Successfully Completed
         if ($status === 'processing') {
             WC()->session->set("{$this->id}_pending_webhook", false);
             echo json_encode(['result' => 'success', 'redirect' => $this->get_return_url($order)]);
@@ -541,7 +545,7 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
      */
     protected function validate_response_params($order, $request)
     {
-        if (isset($this->settings['iframe_handshake']) && $this->settings['iframe_handshake'] == 'yes') {
+        if ($this->handshake_feature_check()) {
             // Check Handshake
             if (!$this->check_handshake_response($order, $request)) {
                 $this->log(['Handshake Validation', $_POST]);
@@ -793,5 +797,39 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
         }
 
         $transaction_token = $response['TranzilaTK'];
+    }
+
+    /**
+     * Check If Notify URL Feature Is Enable
+     *
+     * @return boolean
+     */
+    public function notify_url_check()
+    {
+        return isset($this->settings['iframe_notify_url']) && $this->settings['iframe_notify_url'] == 'yes';
+    }
+
+    /**
+     * Check If Handshake Feature Is Enable
+     *
+     * @return boolean
+     */
+    public function handshake_feature_check()
+    {
+        return isset($this->settings['iframe_handshake']) && $this->settings['iframe_handshake'] == 'yes';
+    }
+
+    /**
+     * Return Onload Function To Power up BlockUI
+     * Optional Passing Script
+     *
+     * @param boolean $block
+     * @param null|string $script
+     * @return string
+     */
+    public function get_front_blockui_onload($block = true, $script = null)
+    {
+        return $block ? '<script>window.jQuery(document).ready(function(){jQuery("div.woocommerce:not(.widget)").block({message: null,overlayCSS: {background: "#fff",opacity: 0.6}});'.$script.'})</script>'
+            : '<script>window.onload = function(){window.parent.jQuery("div.woocommerce:not(.widget)").unblock();'.$script.'}</script>';
     }
 }
