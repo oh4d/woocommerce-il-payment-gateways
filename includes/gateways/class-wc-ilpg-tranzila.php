@@ -16,6 +16,7 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
         $this->gateway_method_title = 'Tranzila';
         $this->gateway_method_description = 'Tranzila';
         $this->icon = 'http://www.tranzila.com/images/tranzila-wallet.gif';
+        $this->order_button_text  = __('Continue to payment', 'woocommerce-il-payment-gateways');
 
         add_action('wp_enqueue_scripts', array($this, 'payment_scripts'));
 
@@ -388,7 +389,7 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
             if (!$item->get_quantity())
                 return '';
 
-            $p_desk .= $item->get_name() . 'x' . $item->get_quantity() . ' ' . $item->get_total() . get_woocommerce_currency_symbol() . "\n";
+            $p_desk .= $item->get_quantity() . ' ' . $item->get_name() . ' ' . $item->get_total() . get_woocommerce_currency_symbol() . "\n";
         }
 
         return urlencode($p_desk);

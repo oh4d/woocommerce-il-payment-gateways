@@ -22,6 +22,7 @@ abstract class WC_IL_PGateways extends WC_Payment_Gateway
     {
         $this->method_title = __("IL Payment Gateways {$this->gateway_method_title}");
         $this->method_description = __("IL Payment Gateways {$this->gateway_method_description}");
+        $this->order_button_text  = ($this->order_button_text) ? $this->order_button_text : __("Continue to payment", "woocommerce-il-payment-gateways");
 
         $this->init_settings();
 
