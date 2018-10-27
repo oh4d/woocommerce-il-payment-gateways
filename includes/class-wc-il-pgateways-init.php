@@ -9,6 +9,11 @@ class WC_IL_PGateways_Init
     /**
      * @var string
      */
+    public $version = '1.0.0';
+
+    /**
+     * @var string
+     */
     public $plugin_path;
 
     /**
@@ -54,6 +59,8 @@ class WC_IL_PGateways_Init
         $this->includes_path = plugin_dir_path($this->file) . 'includes';
 
         $this->includes_url = plugin_dir_url($this->file);
+
+        $this->define_constants();
     }
 
     /**
@@ -95,7 +102,12 @@ class WC_IL_PGateways_Init
      *
      * @return void
      */
-    public function activate() {}
+    public function activate()
+    {
+        require_once($this->includes_path . '/class-wc-il-pgateways-install.php');
+
+        new WC_IL_PGateways_Install();
+    }
 
     /**
      * Check Plugin Dependencies
@@ -191,5 +203,13 @@ class WC_IL_PGateways_Init
         $this->log = new WC_Logger();
         $this->gateways_loader = new WC_IL_PGateways_Loader();
         $this->checkout = new WC_IL_PGateways_Checkout_Handler();
+    }
+
+    /**
+     * Define constants
+     */
+    public function define_constants()
+    {
+        define('WC_IL_PGATEWAYS_VERSION', $this->version);
     }
 }

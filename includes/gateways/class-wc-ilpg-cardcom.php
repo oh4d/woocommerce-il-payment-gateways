@@ -23,7 +23,7 @@ class WC_ILPG_Cardcom extends WC_IL_PGateways
      * Process Payment
      *
      * @param int $order_id
-     * @return array|void
+     * @return array
      */
     public function process_payment($order_id)
     {
@@ -31,6 +31,6 @@ class WC_ILPG_Cardcom extends WC_IL_PGateways
 
         $this->complete_order($order, '', uniqid());
 
-        parent::process_payment($order_id);
+        return parent::process_payment($order_id);
     }
 }
