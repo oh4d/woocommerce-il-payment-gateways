@@ -6,13 +6,31 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class WC_ILPG_Cardcom extends WC_IL_PGateways
 {
+    /**
+     * WC_ILPG_Cardcom constructor.
+     */
     public function __construct()
     {
         $this->has_fields = true;
         $this->id = 'ilpg_cardcom';
-        $this->gateway_method_title = 'Cardcom';
-        $this->gateway_method_description = 'Cardcom';
+        $this->gateway_method_title = 'CardCom';
+        $this->gateway_method_description = 'CardCom';
 
         parent::__construct();
+    }
+
+    /**
+     * Process Payment
+     *
+     * @param int $order_id
+     * @return array|void
+     */
+    public function process_payment($order_id)
+    {
+        $order = wc_get_order($order_id);
+
+        $this->complete_order($order, '', uniqid());
+
+        parent::process_payment($order_id);
     }
 }

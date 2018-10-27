@@ -146,6 +146,8 @@ abstract class WC_IL_PGateways extends WC_Payment_Gateway
         $order->add_order_note(sprintf(__("{$this->title}, Order Successfully Paid %s"), $note));
 
         WC()->cart->empty_cart();
+
+        do_action("wc_{$this->id}_payment_completed", $order);
     }
 
     /**

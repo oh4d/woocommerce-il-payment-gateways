@@ -30,6 +30,7 @@ class WC_IL_PGateways_Loader
     public function payment_gateways($methods)
     {
         $methods[] = 'WC_ILPG_Tranzila';
+        $methods[] = 'WC_ILPG_CardCom';
 
         // $methods[] = 'WC_ILPG_Yaad_Pay';
         // $methods[] = 'WC_ILPG_Pelecard';
