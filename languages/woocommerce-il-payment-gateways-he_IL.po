@@ -5,73 +5,78 @@ msgstr ""
 "Project-Id-Version: WooCommerce IL Payment Gateways 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce-il-"
 "payment-gateways\n"
-"POT-Creation-Date: 2018-05-30 18:30:31+00:00\n"
+"POT-Creation-Date: 2018-08-29 18:55:16+00:00\n"
+"PO-Revision-Date: 2018-08-29 22:05+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-05-31 00:47+0300\n"
-"Language-Team: \n"
-"X-Generator: Poedit 2.0.7\n"
-"Last-Translator: \n"
+"X-Generator: Poedit 2.0.9\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: he\n"
 
-#: includes/abstracts/abstract-wc-il-pgateways.php:206
+#: includes/abstracts/abstract-wc-il-pgateways.php:25
+#: includes/gateways/class-wc-ilpg-tranzila.php:19
+msgid "Continue to payment"
+msgstr "המשך לתשלום"
+
+#: includes/abstracts/abstract-wc-il-pgateways.php:207
 msgid "Number"
 msgstr "מספר"
 
-#: includes/abstracts/abstract-wc-il-pgateways.php:211
+#: includes/abstracts/abstract-wc-il-pgateways.php:212
 msgid "Expiry Date"
 msgstr "תאריך תפוגה"
 
-#: includes/abstracts/abstract-wc-il-pgateways.php:216
+#: includes/abstracts/abstract-wc-il-pgateways.php:217
 msgid "CVC"
 msgstr ""
 
-#: includes/abstracts/abstract-wc-il-pgateways.php:225
-#: includes/abstracts/abstract-wc-il-pgateways.php:236
-#: includes/abstracts/abstract-wc-il-pgateways.php:249
+#: includes/abstracts/abstract-wc-il-pgateways.php:226
+#: includes/abstracts/abstract-wc-il-pgateways.php:237
+#: includes/abstracts/abstract-wc-il-pgateways.php:250
 msgid "Credit Card %s is a required field."
 msgstr "כרטיס אשראי %s הוא שדה חובה."
 
-#: includes/abstracts/abstract-wc-il-pgateways.php:256
+#: includes/abstracts/abstract-wc-il-pgateways.php:257
 msgid "Credit Card Holder ID is invalid."
 msgstr "תעודת זהות אינה תקינה."
 
-#: includes/abstracts/abstract-wc-il-pgateways.php:265
+#: includes/abstracts/abstract-wc-il-pgateways.php:266
 msgid "Credit Card Number is invalid."
 msgstr "מספר כרטיס אשראי אינו תקין."
 
-#: includes/abstracts/abstract-wc-il-pgateways.php:281
+#: includes/abstracts/abstract-wc-il-pgateways.php:282
 msgid "Credit Card Exp Date is invalid."
 msgstr "תאריך כרטיס האשראי אינו תקין."
 
-#: includes/abstracts/abstract-wc-il-pgateways.php:339
+#: includes/abstracts/abstract-wc-il-pgateways.php:340
 msgid "Already using URL as image: %s"
 msgstr ""
 
-#: includes/abstracts/abstract-wc-il-pgateways.php:347
+#: includes/abstracts/abstract-wc-il-pgateways.php:348
 msgid "Select a image to upload"
 msgstr "בחר תמונה להעלות"
 
-#: includes/abstracts/abstract-wc-il-pgateways.php:348
+#: includes/abstracts/abstract-wc-il-pgateways.php:349
 msgid "Use this image"
 msgstr ""
 
-#: includes/abstracts/abstract-wc-il-pgateways.php:349
-#: includes/abstracts/abstract-wc-il-pgateways.php:352
+#: includes/abstracts/abstract-wc-il-pgateways.php:350
+#: includes/abstracts/abstract-wc-il-pgateways.php:353
 msgid "Add image"
 msgstr "הוסף תמונה"
 
-#: includes/abstracts/abstract-wc-il-pgateways.php:360
+#: includes/abstracts/abstract-wc-il-pgateways.php:361
 msgid "Remove image"
 msgstr "הסר תמונה"
 
-#: includes/class-wc-il-pgateways-init.php:110
+#: includes/class-wc-il-pgateways-init.php:109
 msgid "IL Payments requires WooCommerce to be activated"
 msgstr "‫IL Payments מוכרח שהתוסף WooCommerce יהיה דלוק"
 
-#: includes/class-wc-il-pgateways-init.php:114
+#: includes/class-wc-il-pgateways-init.php:113
 msgid "IL Payments requires WooCommerce version 2.5 or greater"
 msgstr "‫IL Payments מוכרח גירסה של WooCommerce גבוה מ 2.5"
 
@@ -79,49 +84,49 @@ msgstr "‫IL Payments מוכרח גירסה של WooCommerce גבוה מ 2.5"
 msgid "An error occurred while calling the API."
 msgstr "נוצרה בעיה."
 
-#: includes/gateways/class-wc-ilpg-tranzila.php:78
-#: includes/gateways/class-wc-ilpg-tranzila.php:277
+#: includes/gateways/class-wc-ilpg-tranzila.php:79
+#: includes/gateways/class-wc-ilpg-tranzila.php:278
 msgid "Card Holder ID"
 msgstr "תעודת זהות"
 
-#: includes/gateways/class-wc-ilpg-tranzila.php:79
+#: includes/gateways/class-wc-ilpg-tranzila.php:80
 msgid "ID"
 msgstr ""
 
-#: includes/gateways/class-wc-ilpg-tranzila.php:135
-#: includes/gateways/class-wc-ilpg-tranzila.php:212
+#: includes/gateways/class-wc-ilpg-tranzila.php:136
+#: includes/gateways/class-wc-ilpg-tranzila.php:213
 msgid "Payment error: "
 msgstr "בעיה בתשלום: "
 
-#: includes/gateways/class-wc-ilpg-tranzila.php:259
+#: includes/gateways/class-wc-ilpg-tranzila.php:260
 msgid "Cant Process Payment, Content Site Manager"
 msgstr "לא ניתן להמשיך בתשלום, צור קשר עם מנהל האתר"
 
-#: includes/gateways/class-wc-ilpg-tranzila.php:314
+#: includes/gateways/class-wc-ilpg-tranzila.php:327
 msgid "Process"
 msgstr "המשך"
 
-#: includes/gateways/class-wc-ilpg-tranzila.php:443
-#: includes/gateways/class-wc-ilpg-tranzila.php:738
+#: includes/gateways/class-wc-ilpg-tranzila.php:446
+#: includes/gateways/class-wc-ilpg-tranzila.php:749
 msgid "Something Went Wrong, Contact Shop Manager"
 msgstr "קרתה שגיאה, צור קשר עם מנהל האתר"
 
-#: includes/gateways/class-wc-ilpg-tranzila.php:620
-#: includes/gateways/class-wc-ilpg-tranzila.php:659
-#: includes/gateways/class-wc-ilpg-tranzila.php:663
-#: includes/gateways/class-wc-ilpg-tranzila.php:792
+#: includes/gateways/class-wc-ilpg-tranzila.php:631
+#: includes/gateways/class-wc-ilpg-tranzila.php:670
+#: includes/gateways/class-wc-ilpg-tranzila.php:674
+#: includes/gateways/class-wc-ilpg-tranzila.php:803
 msgid "Error Has Occurs"
 msgstr "קרתה שגיאה"
 
-#: includes/gateways/class-wc-ilpg-tranzila.php:624
+#: includes/gateways/class-wc-ilpg-tranzila.php:635
 msgid "Error Has Occurs, Contact Shop Manager"
 msgstr "‫קרתה שגיאה, צור קשר עם מנהל האתר"
 
-#: includes/gateways/class-wc-ilpg-tranzila.php:647
+#: includes/gateways/class-wc-ilpg-tranzila.php:658
 msgid "Unable To Process Payment"
 msgstr ""
 
-#: includes/gateways/class-wc-ilpg-tranzila.php:682
+#: includes/gateways/class-wc-ilpg-tranzila.php:693
 msgid "Transaction failed"
 msgstr ""
 
@@ -975,6 +980,12 @@ msgstr "מנגנון Handshake"
 msgid "Enable Tranzila iFrame Handshake Transaction Key."
 msgstr ""
 
+#: includes/gateways/settings/settings-ilpg-tranzila.php:40
+msgid ""
+"Enable In Tranzila Settings Needed For This To Work, And Add The Server IP "
+"Address To Tranzila Settings: %s"
+msgstr ""
+
 #: includes/gateways/settings/settings-ilpg-tranzila.php:44
 #: includes/gateways/settings/settings-ilpg-tranzila.php:46
 msgid "Tranzila PW"
@@ -1111,11 +1122,11 @@ msgid "WooCommerce IL Payment Gateways"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "https://github.com"
+msgid "https://github.com/oh4d/woocommerce-il-payment-gateways"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "Israel Gateways"
+msgid "Israel Payment Gateways For Woocommerce Plugin"
 msgstr ""
 
 #. Author of the plugin/theme

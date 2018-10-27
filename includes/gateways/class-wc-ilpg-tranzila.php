@@ -291,11 +291,29 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
     protected function global_params($order)
     {
         return array(
-            'cred_type' => 1,
+            'cred_type' => 8, // 1 = Regular credit, 3 - Direct credit, 8 - Payments credit
             'tranmode' => 'A',  // Mode for verify transaction, / VK
             'sum' => (string) $order->get_total(),
             'currency' => $this->gateway_currency(),
+            // 'npay' => 11,
+            // 'fpay' => $this->getFirstPaymentSum(),
         );
+    }
+
+    /**
+     * @Only case of API Request
+     */
+    protected function getFirstPaymentSum()
+    {
+
+    }
+
+    /**
+     * @Only case of API Request
+     */
+    protected function calcPaymentPerMonth()
+    {
+
     }
 
     /**
@@ -325,6 +343,7 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
             'trTextColor' => (isset($this->settings['iframe_text_color'])) ? str_replace('#', '', $this->settings['iframe_text_color']) : '',
             'trButtonColor' => (isset($this->settings['iframe_button_bg'])) ? str_replace('#', '', $this->settings['iframe_button_bg']) : '',
             'buttonLabel' => (isset($this->settings['iframe_submit']) && $this->settings['iframe_submit']) ? $this->settings['iframe_submit'] : __('Process', 'woocommerce-il-payment-gateways'),
+            'maxpay' => 10 // TODO Add Settings Select Box For Number OF Payments
             // 'opensum' => 1, // allow kind of donation, customer select the price
             // 'u71' => '1',
             // 'orderid' => '511',
@@ -363,7 +382,6 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
             'supplier' => $this->settings['terminal'],
             'sum' => (string) $order->get_total(),
             'currency' => $this->gateway_currency(),
-            'cred_type' => 1,
             'op' => 1,
             'IMaam' => 0.17,
             'order' => $order->get_id(),
@@ -563,7 +581,6 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
         $validate = [
             'sum' => (string) $order->get_total(),
             'currency' => $this->gateway_currency(),
-            'cred_type' => 1,
             'IMaam' => 0.17
         ];
 
