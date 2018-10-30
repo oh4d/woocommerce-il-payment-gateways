@@ -54,7 +54,7 @@ class WC_IL_PGateways_Install
                `amount` float(11) NOT NULL,
                `date` timestamp NOT NULL,
                `status` int(1) NOT NULL,
-               `method` varchar(100) NOT NULL,
+               `gateway` varchar(100) NOT NULL,
                `note` text NOT NULL,
                `response` longtext NOT NULL,
                `ip` varchar(50) NOT NULL,

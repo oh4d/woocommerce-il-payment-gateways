@@ -27,7 +27,7 @@ class WC_IL_PGateways_Loader
      * @param $methods
      * @return array
      */
-    public function payment_gateways($methods)
+    public function payment_gateways($methods = [])
     {
         $methods[] = 'WC_ILPG_Tranzila';
         $methods[] = 'WC_ILPG_CardCom';

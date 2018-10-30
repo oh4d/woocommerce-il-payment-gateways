@@ -58,7 +58,7 @@ class WC_IL_PGateways_Init
         $this->plugin_path = plugin_dir_path($this->file);
         $this->includes_path = plugin_dir_path($this->file) . 'includes';
 
-        $this->includes_url = plugin_dir_url($this->file);
+        $this->includes_url = plugin_dir_url($this->file) . '/includes/';
 
         $this->define_constants();
     }
@@ -75,7 +75,10 @@ class WC_IL_PGateways_Init
             $this->dependencies();
             $this->includes();
 
-            // $this->load_plugin_textdomain();
+            if (is_admin()) {
+                $this->admin();
+                // add_action('init', [$this, 'admin']);
+            }
         }
         catch (\Exception $e)
         {
@@ -200,9 +203,31 @@ class WC_IL_PGateways_Init
         require_once($this->includes_path . '/abstracts/abstract-wc-il-pgateways.php');
         require_once($this->includes_path . '/gateways/class-wc-il-pgateways-loader.php');
 
+        if (is_admin()) {
+            require_once($this->includes_path . '/admin/class-wc-il-pgateways-admin.php');
+            require_once($this->includes_path . '/admin/class-wc-ilpg-transactions-list-table.php');
+        }
+
         $this->log = new WC_Logger();
         $this->gateways_loader = new WC_IL_PGateways_Loader();
         $this->checkout = new WC_IL_PGateways_Checkout_Handler();
+    }
+
+    /**
+     * @return array
+     */
+    public function get_gateways_methods()
+    {
+        if (!$this->gateways_loader) {
+            $this->gateways_loader = new WC_IL_PGateways_Loader();
+        }
+
+        return $this->gateways_loader->payment_gateways();
+    }
+
+    public function admin()
+    {
+        new WC_IL_PGateways_Admin();
     }
 
     /**
