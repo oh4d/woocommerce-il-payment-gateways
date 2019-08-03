@@ -72,3 +72,69 @@ if (!function_exists('luhn_check')) {
         return ($total % 10 == 0) ? true : false;
     }
 }
+
+if (!function_exists('to_xml')) {
+    /**
+     * Convert Array To XML Tags
+     *
+     * @param $array
+     * @param string|null $lastNodeKey
+     * @return string
+     */
+    function to_xml($array, $lastNodeKey = null)
+    {
+        $xml = '';
+
+        foreach ($array as $element => $value) {
+            if (is_array($value)) {
+                $arrayKey = (is_numeric($element) && $lastNodeKey) ? $lastNodeKey : $element;
+
+                if (!is_numeric($element) || $element > 0) {
+                    $xml .= "<$arrayKey>";
+                }
+
+                $xml .= to_xml($value, $element);
+
+                if (!is_numeric($element) || $element < count($array) - 1) {
+                    $xml .= "</$arrayKey>";
+                }
+            } elseif ($value == '') {
+                $xml .= "<$element></$element>";
+            } else {
+                $xml .= "<$element>" . htmlentities($value) . "</$element>";
+            }
+        }
+
+        return $xml;
+    }
+}
+
+if (!function_exists('gen_uuid')) {
+    /**
+     * Generate uuid v3
+     *
+     * @return string
+     */
+    function gen_uuid()
+    {
+        return sprintf( '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
+            // 32 bits for "time_low"
+            mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ),
+
+            // 16 bits for "time_mid"
+            mt_rand( 0, 0xffff ),
+
+            // 16 bits for "time_hi_and_version",
+            // four most significant bits holds version number 4
+            mt_rand( 0, 0x0fff ) | 0x4000,
+
+            // 16 bits, 8 bits for "clk_seq_hi_res",
+            // 8 bits for "clk_seq_low",
+            // two most significant bits holds zero and one for variant DCE1.1
+            mt_rand( 0, 0x3fff ) | 0x8000,
+
+            // 48 bits for "node"
+            mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff )
+        );
+    }
+}

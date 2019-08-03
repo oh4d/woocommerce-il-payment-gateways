@@ -19,6 +19,11 @@ class WC_IL_PGateways_Init
     /**
      * @var string
      */
+    public $plugin_url;
+
+    /**
+     * @var string
+     */
     public $includes_path;
 
     /**
@@ -58,7 +63,8 @@ class WC_IL_PGateways_Init
         $this->plugin_path = plugin_dir_path($this->file);
         $this->includes_path = plugin_dir_path($this->file) . 'includes';
 
-        $this->includes_url = plugin_dir_url($this->file) . '/includes/';
+        $this->plugin_url = plugin_dir_url($this->file);
+        $this->includes_url = plugin_dir_url($this->file) . 'includes/';
 
         $this->define_constants();
     }

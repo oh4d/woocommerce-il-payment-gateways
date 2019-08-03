@@ -16,6 +16,6 @@ class WC_IL_PGateways_Checkout_Handler
      */
     public function enqueue_scripts()
     {
-        wp_enqueue_style('wc-il-pgateways-frontend-checkout', woocommerce_il_pgateways()->includes_url . 'assets/css/wc-il-pgateways-frontend-checkout.css');
+        wp_enqueue_style('wc-il-pgateways-frontend-checkout', woocommerce_il_pgateways()->plugin_url . 'assets/css/wc-il-pgateways-frontend-checkout.css');
     }
 }

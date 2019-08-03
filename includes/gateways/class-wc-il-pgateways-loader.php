@@ -17,6 +17,7 @@ class WC_IL_PGateways_Loader
         require_once($includes_path . '/gateways/class-wc-ilpg-tranzila.php');
         require_once($includes_path . '/gateways/class-wc-ilpg-pelecard.php');
         require_once($includes_path . '/gateways/class-wc-ilpg-cardcom.php');
+        require_once($includes_path . '/gateways/class-wc-ilpg-creditguard.php');
 
         add_filter('woocommerce_payment_gateways', array($this, 'payment_gateways'));
     }
@@ -30,7 +31,7 @@ class WC_IL_PGateways_Loader
     public function payment_gateways($methods = [])
     {
         $methods[] = 'WC_ILPG_Tranzila';
-        $methods[] = 'WC_ILPG_CardCom';
+        $methods[] = 'WC_ILPG_CreditGuard';
 
         // $methods[] = 'WC_ILPG_Yaad_Pay';
         // $methods[] = 'WC_ILPG_Pelecard';

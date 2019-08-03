@@ -47,7 +47,7 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
 
     public function payment_scripts()
     {
-        wp_register_script( 'wc-il-pgateways-tranzila-pending', woocommerce_il_pgateways()->includes_url . 'assets/js/wc-il-pgateways-tranzila-pending.js', array('jquery'), false, true );
+        wp_register_script( 'wc-il-pgateways-tranzila-pending', woocommerce_il_pgateways()->plugin_url . 'assets/js/wc-il-pgateways-tranzila-pending.js', array('jquery'), false, true );
         wp_localize_script('wc-il-pgateways-tranzila-pending', 'base', ['url' => WC()->api_request_url('')]);
     }
 
@@ -337,7 +337,7 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
             'lang' => $this->get_settings_lang_param(),
             'remarks' => $order->get_customer_note(),
             'key' => $order->get_order_key(),
-            'pdesc' => $this->transform_order_info($order),
+            'pdesc' => urlencode($this->transform_order_info($order)),
             'ppnewwin' => 'no', // paypal button
             'trBgColor' => (isset($this->settings['iframe_bg_color'])) ? str_replace('#', '', $this->settings['iframe_bg_color']) : '',
             'trTextColor' => (isset($this->settings['iframe_text_color'])) ? str_replace('#', '', $this->settings['iframe_text_color']) : '',
@@ -387,30 +387,6 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
             'order' => $order->get_id(),
             'TranzilaPW' => $this->settings['tranzila_pw']
         );
-    }
-
-    /**
-     * Create Order Details Lined To Send Tranzila
-     *
-     * @param WC_Order $order
-     * @return string
-     */
-    public function transform_order_info($order)
-    {
-        $items = $order->get_items();
-
-        if (!count($items))
-            return '';
-
-        $p_desk = '';
-        foreach ($items as $item) {
-            if (!$item->get_quantity())
-                return '';
-
-            $p_desk .= $item->get_quantity() . ' ' . $item->get_name() . ' ' . $item->get_total() . get_woocommerce_currency_symbol() . "\n";
-        }
-
-        return urlencode($p_desk);
     }
 
     /**

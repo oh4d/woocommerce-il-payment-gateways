@@ -69,7 +69,7 @@ abstract class WC_IL_PGateways extends WC_Payment_Gateway
     public function enqueue_scripts()
     {
         wp_enqueue_media();
-        wp_enqueue_script( 'wc-il-pgateways-settings', woocommerce_il_pgateways()->includes_url . '/assets/js/wc-il-pgateways-settings.js', array( 'jquery' ), false, true );
+        wp_enqueue_script( 'wc-il-pgateways-settings', woocommerce_il_pgateways()->plugin_url . '/assets/js/wc-il-pgateways-settings.js', array( 'jquery' ), false, true );
     }
 
     /**
@@ -194,6 +194,30 @@ abstract class WC_IL_PGateways extends WC_Payment_Gateway
     public function log($message)
     {
         woocommerce_il_pgateways()->log->add("wc_{$this->id}", is_string($message) ? $message : json_encode($message), WC_Log_Levels::ALERT);
+    }
+
+    /**
+     * Create Order Details Lined To Send Tranzila
+     *
+     * @param WC_Order $order
+     * @return string
+     */
+    public function transform_order_info($order)
+    {
+        $items = $order->get_items();
+
+        if (!count($items))
+            return '';
+
+        $p_desk = '';
+        foreach ($items as $item) {
+            if (!$item->get_quantity())
+                return '';
+
+            $p_desk .= $item->get_quantity() . ' ' . $item->get_name() . ' ' . $item->get_total() . get_woocommerce_currency() . " \n";
+        }
+
+        return $p_desk;
     }
 
     /**
