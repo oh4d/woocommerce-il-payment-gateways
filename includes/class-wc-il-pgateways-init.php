@@ -101,7 +101,8 @@ class WC_IL_PGateways_Init
      */
     public function load()
     {
-        register_activation_hook($this->file, array($this, 'activate'));
+        // Disable for now the installation hook, not completed
+        // register_activation_hook($this->file, array($this, 'activate'));
 
         add_action('plugins_loaded', array($this, 'bootstrap'));
     }
@@ -231,9 +232,15 @@ class WC_IL_PGateways_Init
         return $this->gateways_loader->payment_gateways();
     }
 
+    /**
+     * Initialize admin panel hooks.
+     *
+     * @return void
+     */
     public function admin()
     {
-        new WC_IL_PGateways_Admin();
+        // Hide transactions table list page for now (in progress).
+        // new WC_IL_PGateways_Admin();
     }
 
     /**
