@@ -121,7 +121,7 @@ class WC_ILPG_CreditGuard extends WC_IL_PGateways
             }
 
             echo '<script>window.top.location.href = "' . $redirect_url . '";</script>';
-            return;
+            exit;
         }
 
         // In Success transaction only relay on the id that sent while creating the transaction.
@@ -144,6 +144,7 @@ class WC_ILPG_CreditGuard extends WC_IL_PGateways
         )));
 
         echo '<script>window.top.location.href = "' . $this->get_return_url($order) . '";</script>';
+        exit;
     }
 
     /**

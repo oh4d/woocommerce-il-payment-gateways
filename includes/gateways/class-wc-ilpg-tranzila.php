@@ -200,7 +200,7 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
             $home_url = get_home_url();
             $this->log('Cant Find Related Order To Order Key');
             echo '<script>window.parent.location.href = "'+$home_url+'"</script>';
-            return;
+            exit;
         }
 
         // Handshake Is Enable
@@ -215,13 +215,13 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
                 // Redirect to Checkout Page
                 $redirect_url = $order->get_checkout_payment_url();
                 echo '<script>window.parent.location.href = "' . $redirect_url . '";</script>';
-                return;
+                exit;
             }
         }
 
         echo $this->make_form_view($order, isset($thtk) ? $thtk : false);
         echo $this->get_front_blockui_onload(false, 'document.forms["'.$this->id.'"].submit()');
-        return;
+        exit;
     }
 
     /**
@@ -411,7 +411,7 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
         if (!$order) {
             $redirect_url = home_url('/');
             echo '<script>window.top.location.href = "' . $redirect_url . '";</script>';
-            return;
+            exit;
         }
 
         $status = $order->get_status();
@@ -427,7 +427,7 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
             // Redirect to Checkout Page
             $redirect_url = $order->get_checkout_payment_url(true);
             echo '<script>window.top.location.href = "' . $redirect_url . '";</script>';
-            return;
+            exit;
         }
 
         // Check If Notify URL Is Disable
@@ -443,19 +443,20 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
             }
 
             echo '<script>window.top.location.href = "' . $redirect_url . '";</script>';
-            return;
+            exit;
         }
 
         // Case Webhook Already Entered
         if ($status === 'processing') {
             $redirect_url = $this->get_return_url($order);
             echo '<script>window.top.location.href = "' . $redirect_url . '";</script>';
-            return;
+            exit;
         }
 
         // Case Of Delay With The Notify URL, Wait 10sec with 2 ajax requests and check the Status
         WC()->session->set("{$this->id}_pending_webhook", ['order_id' => $order_id, 'tries' => 0]);
         echo '<script>window.parent.pendingResponse.init()</script>';
+        exit;
     }
 
     /**
