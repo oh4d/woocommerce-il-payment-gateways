@@ -167,7 +167,7 @@ abstract class WC_IL_PGateways extends WC_Payment_Gateway
     protected function validate_credentials() {}
 
     /**
-     * Get Locale For Yaad Pay IFrame Request
+     * Get Locale For Request
      *
      * @return string
      */
@@ -194,6 +194,20 @@ abstract class WC_IL_PGateways extends WC_Payment_Gateway
     public function log($message)
     {
         woocommerce_il_pgateways()->log->add("wc_{$this->id}", is_string($message) ? $message : json_encode($message), WC_Log_Levels::ALERT);
+    }
+
+    /**
+     * Return Onload Function To Power up BlockUI
+     * Optional Passing Script
+     *
+     * @param boolean $block
+     * @param null|string $script
+     * @return string
+     */
+    public function get_front_blockui_onload($block = true, $script = null)
+    {
+        return $block ? '<script>window.jQuery(document).ready(function(){jQuery("div.woocommerce:not(.widget)").block({message: null,overlayCSS: {background: "#fff",opacity: 0.6}});'.$script.'})</script>'
+            : '<script>window.onload = function(){window.parent.jQuery("div.woocommerce:not(.widget)").unblock();'.$script.'}</script>';
     }
 
     /**

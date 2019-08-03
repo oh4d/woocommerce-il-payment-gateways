@@ -83,7 +83,6 @@ class WC_ILPG_CreditGuard extends WC_IL_PGateways
         echo '<iframe src="' . $transaction->mpiHostedPageUrl . '"
                     id="chekout_frame" class="ilpg_chekout_frame" name="chekout_frame"
                     style="border:none;width:100%;height:550px"></iframe>';
-        exit;
     }
 
     /**
@@ -95,6 +94,8 @@ class WC_ILPG_CreditGuard extends WC_IL_PGateways
     public function gateway_response()
     {
         $transaction_id = $_GET['txId'];
+
+        echo '<script>window.parent.jQuery("div.woocommerce:not(.widget)").block({message: null,overlayCSS: {background: "#fff",opacity: 0.6}});</script>';
 
         try {
             $transaction_details = $this->check_transaction($transaction_id);

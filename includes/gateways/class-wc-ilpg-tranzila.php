@@ -47,7 +47,7 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
 
     public function payment_scripts()
     {
-        wp_register_script( 'wc-il-pgateways-tranzila-pending', woocommerce_il_pgateways()->plugin_url . 'assets/js/wc-il-pgateways-tranzila-pending.js', array('jquery'), false, true );
+        wp_register_script( 'wc-il-pgateways-tranzila-pending', woocommerce_il_pgateways()->plugin_url . 'assets/js/wc-il-pgateways-tranzila-pending.js', array('jquery', 'jquery-blockui'), false, true );
         wp_localize_script('wc-il-pgateways-tranzila-pending', 'base', ['url' => WC()->api_request_url('')]);
     }
 
@@ -150,7 +150,7 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
     public function receipt_page($order_id)
     {
         if (!isset($this->settings['iframe']) || $this->settings['iframe'] == 'no')
-            exit;
+            return;
 
         $order = wc_get_order($order_id);
 
@@ -200,7 +200,7 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
             $home_url = get_home_url();
             $this->log('Cant Find Related Order To Order Key');
             echo '<script>window.parent.location.href = "'+$home_url+'"</script>';
-            exit;
+            return;
         }
 
         // Handshake Is Enable
@@ -215,13 +215,13 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
                 // Redirect to Checkout Page
                 $redirect_url = $order->get_checkout_payment_url();
                 echo '<script>window.parent.location.href = "' . $redirect_url . '";</script>';
-                exit;
+                return;
             }
         }
 
         echo $this->make_form_view($order, isset($thtk) ? $thtk : false);
         echo $this->get_front_blockui_onload(false, 'document.forms["'.$this->id.'"].submit()');
-        exit;
+        return;
     }
 
     /**
@@ -393,6 +393,7 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
      * Gateway Response From IFrame Flow
      *
      * @url SITE_URL/wc-api/WC_Gateway_ilpg_tranzila/
+     * @return void
      */
     public function gateway_response()
     {
@@ -410,7 +411,7 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
         if (!$order) {
             $redirect_url = home_url('/');
             echo '<script>window.top.location.href = "' . $redirect_url . '";</script>';
-            exit;
+            return;
         }
 
         $status = $order->get_status();
@@ -426,7 +427,7 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
             // Redirect to Checkout Page
             $redirect_url = $order->get_checkout_payment_url(true);
             echo '<script>window.top.location.href = "' . $redirect_url . '";</script>';
-            exit;
+            return;
         }
 
         // Check If Notify URL Is Disable
@@ -442,20 +443,19 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
             }
 
             echo '<script>window.top.location.href = "' . $redirect_url . '";</script>';
-            exit;
+            return;
         }
 
         // Case Webhook Already Entered
         if ($status === 'processing') {
             $redirect_url = $this->get_return_url($order);
             echo '<script>window.top.location.href = "' . $redirect_url . '";</script>';
-            exit;
+            return;
         }
 
         // Case Of Delay With The Notify URL, Wait 10sec with 2 ajax requests and check the Status
         WC()->session->set("{$this->id}_pending_webhook", ['order_id' => $order_id, 'tries' => 0]);
         echo '<script>window.parent.pendingResponse.init()</script>';
-        exit;
     }
 
     /**
@@ -817,19 +817,5 @@ class WC_ILPG_Tranzila extends WC_IL_PGateways
     public function handshake_feature_check()
     {
         return isset($this->settings['iframe_handshake']) && $this->settings['iframe_handshake'] == 'yes';
-    }
-
-    /**
-     * Return Onload Function To Power up BlockUI
-     * Optional Passing Script
-     *
-     * @param boolean $block
-     * @param null|string $script
-     * @return string
-     */
-    public function get_front_blockui_onload($block = true, $script = null)
-    {
-        return $block ? '<script>window.jQuery(document).ready(function(){jQuery("div.woocommerce:not(.widget)").block({message: null,overlayCSS: {background: "#fff",opacity: 0.6}});'.$script.'})</script>'
-            : '<script>window.onload = function(){window.parent.jQuery("div.woocommerce:not(.widget)").unblock();'.$script.'}</script>';
     }
 }
