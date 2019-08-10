@@ -34,4 +34,12 @@ return [
         'type' => 'text',
         'default' => '',
     ),
+    'payments' => array(
+        'title' => __('Number of payments', 'woocommerce-il-payment-gateways'),
+        'label' => '',
+        'type' => 'number',
+        'description' => __('The number of payments allowed for the client. Case left empty or with 0 value will disabled and create regular transaction.', 'woocommerce-il-payment-gateways'),
+        'default' => '0',
+        'desc_tip' => true
+    ),
 ];

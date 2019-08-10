@@ -94,6 +94,25 @@ abstract class WC_IL_PGateways extends WC_Payment_Gateway
         );
     }
 
+    /**
+     * Process refund.
+     *
+     * If the gateway declares 'refunds' support, this will allow it to refund.
+     * a passed in amount.
+     *
+     * @param  int    $order_id Order ID.
+     * @param  float  $amount Refund amount.
+     * @param  string $reason Refund reason.
+     * @return boolean|WP_Error True or false based on success, or a  object.
+     */
+    public function process_refund($order_id, $amount = null, $reason = '')
+    {
+        return false;
+    }
+
+    /**
+     *
+     */
     public function payment_fields()
     {
         parent::payment_fields();

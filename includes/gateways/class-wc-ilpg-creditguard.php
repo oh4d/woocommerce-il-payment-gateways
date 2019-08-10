@@ -21,6 +21,8 @@ class WC_ILPG_CreditGuard extends WC_IL_PGateways
         $this->order_button_text  = __('Continue to payment', 'woocommerce-il-payment-gateways');
         $this->transactions_meta_key = "{$this->id}_transactions";
 
+        $this->supports = ['products', 'refunds'];
+
         parent::__construct();
     }
 
@@ -31,6 +33,34 @@ class WC_ILPG_CreditGuard extends WC_IL_PGateways
     {
         add_action("woocommerce_receipt_{$this->id}", array($this, 'receipt_page'));
         add_action("woocommerce_api_wc_gateway_{$this->id}", array($this, 'gateway_response'));
+    }
+
+    /**
+     * Refund transaction.
+     *
+     * @param int $order_id
+     * @param null $amount
+     * @param string $reason
+     * @return boolean|WP_Error True or false based on success, or a WP_Error object.
+     */
+    public function process_refund($order_id, $amount = null, $reason = '')
+    {
+        $order = wc_get_order($order_id);
+        $transaction_id = $order->get_transaction_id();
+
+        try {
+            $response = $this->refund_transaction($transaction_id);
+        } catch (\Exception $exception) {
+            return new WP_Error('error', $exception->getMessage());
+        }
+
+        $order->add_order_note(
+            sprintf(__('CreditCard refund completed. transaction ID: %s for amount: %s', 'woocommerce-il-payment-gateways'),
+                $transaction_id, (($response->total) ? ($response->total / 100 . $response->currency) : 0)
+            )
+        );
+
+        return true;
     }
 
     /**
@@ -124,8 +154,10 @@ class WC_ILPG_CreditGuard extends WC_IL_PGateways
             exit;
         }
 
+        $do_deal_details = $transaction_details->row->cgGatewayResponseXML->ashrait->response->doDeal;
+
         // In Success transaction only relay on the id that sent while creating the transaction.
-        $order_id = (int) $transaction_details->row->cgGatewayResponseXML->ashrait->response->doDeal->user;
+        $order_id = (int) $do_deal_details->user;
         $order = wc_get_order($order_id);
 
         $reference_keys = [
@@ -133,15 +165,23 @@ class WC_ILPG_CreditGuard extends WC_IL_PGateways
             'statusText' => (string) $transaction_details->row->statusText,
             'cgGatewayResponseCode' => (string) $transaction_details->row->cgGatewayResponseCode,
             'cgGatewayResponseText' => (string) $transaction_details->row->cgGatewayResponseText,
+            'total' => (string) ((int) $do_deal_details->total) / 100,
+            'currency' => (string) $do_deal_details->currency,
+            'creditType' => (string) $do_deal_details->creditType,
         ];
+
+        if ($reference_keys['creditType'] === 'Payments') {
+            $reference_keys['numberOfPayments'] = (string) $do_deal_details->creditType;
+            $reference_keys['firstPayment'] = (string) $do_deal_details->firstPayment;
+        }
 
         $this->update_transaction_meta(
             $order, $transaction_id, $reference_keys
         );
 
-        $this->complete_order($order, '', implode(', ', array_map(
+        $this->complete_order($order, implode(', ', array_map(
             function($v, $k) { return sprintf("%s: '%s' ", $k, $v); }, $reference_keys, array_keys($reference_keys)
-        )));
+        )), $reference_keys['tranId']);
 
         echo '<script>window.top.location.href = "' . $this->get_return_url($order) . '";</script>';
         exit;
@@ -155,6 +195,28 @@ class WC_ILPG_CreditGuard extends WC_IL_PGateways
     public function get_settings_lang_param()
     {
         return (get_locale() === 'he_IL') ? 'HEB' : 'EN';
+    }
+
+    /**
+     * Get the transaction credit type
+     * case the max number payment not configured or 0
+     * will return regular credit payment else will return payments transaction.
+     *
+     * @return string
+     */
+    public function get_transaction_credit_type()
+    {
+        return ($this->settings['payments'] && $this->settings['payments'] > 0) ? 'Payments' : 'RegularCredit';
+    }
+
+    /**
+     * Get the max number of payments for transaction configured.
+     *
+     * @return string
+     */
+    public function get_transaction_number_of_payments()
+    {
+        return ($this->get_transaction_credit_type() === 'Payments') ? $this->settings['payments'] : '';
     }
 
     /**
@@ -201,6 +263,8 @@ class WC_ILPG_CreditGuard extends WC_IL_PGateways
 
         $xmlObj = simplexml_load_string($result);
 
+        $this->log($xmlObj);
+
         if (!$xmlObj->response || $xmlObj->response->result != '000') {
             $message = $xmlObj->response ? $xmlObj->response->userMessage : 'Internal Error';
             $code = $xmlObj->response ? $xmlObj->response->result : '500';
@@ -237,7 +301,8 @@ class WC_ILPG_CreditGuard extends WC_IL_PGateways
                         'transactionCode' => 'Phone',
                         'transactionType' => 'Debit',
                         'mpiValidation' => 'AutoComm',
-                        'creditType' => 'RegularCredit',
+                        'creditType' => $this->get_transaction_credit_type(),
+                        'numberOfPayments' => $this->get_transaction_number_of_payments(),
                         'mid' => $this->settings['mid'],
                         'terminalNumber' => $this->settings['terminal'],
                         'uniqueid' => gen_uuid(),
@@ -305,11 +370,40 @@ class WC_ILPG_CreditGuard extends WC_IL_PGateways
         $response = $this->api_request($params, 'inquireTransactions');
 
         if (!$response->row || !$response->row->cgGatewayResponseCode || $response->row->cgGatewayResponseCode != '000') {
-            $status_text = ($response->row) ? ucwords((string) $response->row->statusText) : null;
+            $status_text = ($response->row) ? ucwords((string) $response->row->cgGatewayResponseText) : null;
             $error_code = ($response->row && (string) $response->row->statusText == 'CANCELLED') ? 302 : 422;
 
             throw new \Exception($status_text, $error_code);
         }
+
+        return $response;
+    }
+
+    /**
+     * @param $transaction_id
+     * @return SimpleXMLElement
+     * @throws Exception
+     */
+    protected function refund_transaction($transaction_id)
+    {
+        if (!$transaction_id) {
+            throw new \Exception(__('No transaction id found.', 'woocommerce-il-payment-gateways'), 422);
+        }
+
+        $params = [
+            'ashrait' => [
+                'request' => [
+                    'language' => $this->get_settings_lang_param(),
+                    'command' => 'refundDeal',
+                    'refundDeal' => [
+                        'terminalNumber' => $this->settings['terminal'],
+                        'tranId' => $transaction_id,
+                    ]
+                ]
+            ]
+        ];
+
+        $response = $this->api_request($params, 'refundDeal');
 
         return $response;
     }
