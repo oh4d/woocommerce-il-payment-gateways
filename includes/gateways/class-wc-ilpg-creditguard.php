@@ -48,6 +48,10 @@ class WC_ILPG_CreditGuard extends WC_IL_PGateways
         $order = wc_get_order($order_id);
         $transaction_id = $order->get_transaction_id();
 
+        if ($amount != $order->get_total()) {
+            return new WP_Error('error', 'For refund transaction with CreditGuard please fill the total order amount.');
+        }
+
         try {
             $response = $this->refund_transaction($transaction_id);
         } catch (\Exception $exception) {
