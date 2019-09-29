@@ -425,7 +425,7 @@ class WC_ILPG_CreditGuard extends WC_IL_PGateways
     {
         $order_transactions = get_post_meta($order->get_id(), $this->transactions_meta_key, true);
 
-        if (count($order_transactions)
+        if ($order_transactions && count($order_transactions)
             && ($uniqueId || $cgUid || $token)) {
 
             $searchByKey = ($uniqueId) ? 'uniqueId' : (
