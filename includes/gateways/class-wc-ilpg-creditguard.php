@@ -315,7 +315,7 @@ class WC_ILPG_CreditGuard extends WC_IL_PGateways
                         'successUrl' => WC()->api_request_url("WC_Gateway_{$this->id}") . '?id=' . $order->get_id(),
                         'cancelUrl' => WC()->api_request_url("WC_Gateway_{$this->id}") . '?id=' . $order->get_id(),
                         'errorUrl' => WC()->api_request_url("WC_Gateway_{$this->id}") . '?id=' . $order->get_id(),
-                        'description' => $this->transform_order_info($order),
+                        'description' => preg_replace('/,|\./', ' ', $this->transform_order_info($order)),
                         'email' => $order->get_billing_email(),
                         'total' => $order->get_total() * 100,
                         'currency' => $order->get_currency(),
